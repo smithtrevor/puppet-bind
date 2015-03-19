@@ -29,7 +29,7 @@ define bind::zone (
         'master' => true,
         'slave'  => true,
         'hint'   => true,
-        'stub'   => false,
+        'stub'   => true,
         default  => false,
     }
 

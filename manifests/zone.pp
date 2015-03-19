@@ -91,4 +91,13 @@ define bind::zone (
         require => Package['bind'],
     }
 
+    ini_setting { "${name}::include":
+        ensure            => $ensure,
+        path              => "${bind::confdir}/zones.conf",
+        section           => '',
+        key_val_separator => ' ',
+        value             => "${bind::confdir}/zones/${name}.conf;",
+        notify            => Service['bind'],
+    }
+
 }

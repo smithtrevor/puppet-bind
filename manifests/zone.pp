@@ -95,7 +95,7 @@ define bind::zone (
     file_line { "${name}::include_line":
         ensure  => $ensure,
         path    => "${bind::confdir}/include_zones.conf",
-        line    => "include ${bind::confdir}/zones/${name}.conf",
+        line    => "include \"${bind::confdir}/zones/${name}.conf\";",
         notify  => Service['bind'],
         require => File["${bind::confdir}/include_zones.conf"],
     }

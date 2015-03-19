@@ -2,6 +2,7 @@
 
 define bind::zone (
     $zone_type,
+    $ensure          = 'present',
     $domain          = '',
     $masters         = '',
     $transfer_source = '',
@@ -82,7 +83,7 @@ define bind::zone (
     }
     
     file { "${bind::confdir}/zones/${name}.conf":
-        ensure  => present,
+        ensure  => $ensure,
         owner   => 'root',
         group   => $bind::params::bind_group,
         mode    => '0644',
